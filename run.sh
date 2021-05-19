@@ -2,30 +2,63 @@
 
 # folders
 f_modules=modules
-f_output=outputs
+f_tb=tbs
+
+# script arguments
 args=$@
 
+# provide a structure of command
 function help {
-	echo "This is a help function"
+	echo "Commandas:"
+	echo "'modules' to compile all modules located in /modules folder"
+	echo "'tbs'     to compile all test benchs located in /tbs folder"
 }
 
-function compile_all_modules {
+# compile all verilog modules in 'modules' folder
+function compile_modules {
 	res_compile="$(iverilog $(ls $f_modules/*.v))"
 
-	if [ !$res_compile ]; then
-		echo 'Correctly compiled'
+	if [ !$res ]; then
+		echo 'MODULES: Correctly compiled'
 	else
-		echo $res_compile
+		echo $res
 	fi
 }
+
+# compile all verilog test bench in 'tbs' folder
+function compile_test_benchs {
+	res="$(iverilog $(ls $f_tb/*.v))"
+
+	if [ !$res ]; then
+		echo 'TEST-BENCHS: Correctly compiled'
+	else
+		echo $res
+	fi
+}
+
 
 function main {
 
-	if [[ ${args[0]} == "help" || ${args[0]} == "h" ]]; then
-		help
-	else
-		compile_all_modules
-	fi
+	case ${args[0]} in
+
+		"help" | "h")
+			help
+	    ;;
+
+	  	"modules")
+	    	compile_modules
+	    ;;
+
+	  	"tbs")
+	    	compile_test_benchs
+	    ;;
+
+	  	*)
+	    	compile_modules
+	    	compile_test_benchs
+	    ;;
+	esac
+
 }
 
 main
