@@ -2,7 +2,7 @@
 
 ### Compile
 
-```sh
+```bash
 chmod +x run.sh
 ./run.sh // view compile options
 ```
