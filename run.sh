@@ -10,6 +10,7 @@ args=$@
 # provide a structure of command
 function help {
 	echo "Commandas:"
+	echo "run only the run.sh script to compile all"
 	echo "'modules' to compile all modules located in /modules folder"
 	echo "'tbs'     to compile all test benchs located in /tbs folder"
 }
