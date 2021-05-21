@@ -1,7 +1,8 @@
 module mem (
-	input [31:0] addr,     
-	input [31:0] data,
+	input [31:0] ADDR,
+	input [31:0] DIN,
 	input en_W,
+	input en_R,
 	output reg [31:0] R
 );
 
@@ -9,11 +10,11 @@ module mem (
 
 	always @* begin
 	  if ( en_W ) begin
-	  	memory[addr] <= data;
+	  	memory[ADDR] <= DIN;
 	  	R <= 32'bx;
-	  end 
+	  end
 
-	  else R <= memory[addr];
+	  else R <= memory[ADDR];
 	end
 
 endmodule

@@ -8,23 +8,22 @@ module reg_bank (
 	reg [31:0] memory [0:31];
 	integer i;
 
-	// load 
-	initial $readmemh("bank.mem", memory);
+	// load
+	initial $readmemh("mem/bank.mem", memory);
 
 	always @* begin
-		// write 
+		// write
 		if (REG_WRITE) memory[AW] = DIN;
-		
+
 		// read
 		DR1 <= memory[AR1];
 		DR2 <= memory[AR2];
 
 		// only for testing, final state of memory
-		if (AW == 5'd29) 
+		if (AW == 5'd29)
 			for (i=0; i<32;i=i+1)
 				$display("mem[%d]: %b",i,memory[i]);
 
 	end
 
 endmodule
-

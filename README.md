@@ -9,14 +9,15 @@ chmod +x run.sh
 
 ### Temporal structure
 ```
+.
 ├── mem
-    └── Memory files
+|   └── Memory files
 ├── modules
-    └── Modules files
+|   └── Modules files
 ├── ss
-   └── Screenshoots
+|   └── Screenshoots
 ├── tbs
-   └── Test bench modules
+|   └── Test bench modules
 └── vcd
     └── Wave files
 ```
