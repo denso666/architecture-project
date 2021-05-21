@@ -3,37 +3,55 @@
 # folders
 f_modules=modules
 f_tb=tbs
+f_vcd=vcd
 
 # script arguments
 args=$@
 
+# colors
+red=`tput setaf 5`
+green=`tput setaf 2`
+reset=`tput sgr0`
+
 # provide a structure of command
 function help {
 	echo "Commandas:"
-	echo "run only the run.sh script to compile all"
-	echo "'modules' to compile all modules located in /modules folder"
-	echo "'tbs'     to compile all test benchs located in /tbs folder"
+	echo "-> 'all'     to compile modules and test benchs"
+	echo "-> 'modules' to compile all modules located in /modules folder"
+	echo "-> 'tbs'     to compile all test benchs located in /tbs folder"
 }
 
 # compile all verilog modules in 'modules' folder
 function compile_modules {
-	res_compile="$(iverilog $(ls $f_modules/*.v))"
+	iverilog $(ls $f_modules/*.v) 2> error
 
-	if [ !$res ]; then
-		echo 'MODULES: Correctly compiled'
+	if [[ "$(wc -l error)" != "0 error" ]]; then
+		echo "${red}$(cat error)${reset}"
 	else
-		echo $res
+		echo "${green}@ MODULES: Correctly compiled${reset}"
 	fi
+
+	rm error
 }
 
 # compile all verilog test bench in 'tbs' folder
 function compile_test_benchs {
-	res="$(iverilog $(ls $f_tb/*.v))"
+	iverilog $(ls $f_tb/*.v) 2> error
 
-	if [ !$res ]; then
-		echo 'TEST-BENCHS: Correctly compiled'
+	if [[ "$(wc -l error)" != "0 error" ]]; then
+		echo "${red}$(cat error)${reset}"
 	else
-		echo $res
+		echo "${green}@ TEST-BENCHS: Correctly compiled${reset}"
+	fi
+
+	rm error
+}
+
+# move all vcd files to 'vcd' folder
+function move_vcd {
+	res="$(mv *.vcd $f_vcd/)"
+	if [ !$res ]; then
+		echo "${green}@ The wave files was mooved to 'vcd' folder${reset}"
 	fi
 }
 
@@ -54,9 +72,13 @@ function main {
 	    	compile_test_benchs
 	    ;;
 
-	  	*)
-	    	compile_modules
+		"all")
+			compile_modules
 	    	compile_test_benchs
+	    ;;
+
+	  	*)
+	    	help
 	    ;;
 	esac
 
