@@ -1,6 +1,21 @@
-# computer-architecture-project
+# Computer-architecture-project
 
-## Steps
+### Compile
 
-* run command `chmod +x run.sh` 
-*  si, esto es un commit
+```sh
+chmod +x run.sh
+./run.sh // view compile options
+```
+
+### Temporal structure
+
+├── **mem**
+    └── Memory files
+├── **modules**
+    └── Modules files
+├── **ss**
+   └── Screenshoots
+├── **tbs**
+   └── Test bench modules
+└── **vcd**
+   └── Wave files

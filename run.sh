@@ -49,10 +49,17 @@ function compile_test_benchs {
 
 # move all vcd files to 'vcd' folder
 function move_vcd {
-	res="$(mv *.vcd $f_vcd/)"
-	if [ !$res ]; then
-		echo "${green}@ The wave files was mooved to 'vcd' folder${reset}"
+	mv *.vcd $f_vcd/ 2> temp
+
+	wc -l temp
+
+	if [ "$(wc -l temp)" != "0 temp" ]; then
+		echo "${red}@WAVE: waves files not found${reset}"
+	else
+		echo "${green}@WAVE: waves files was mooved to 'vcd' folder${reset}"
 	fi
+
+	rm temp
 }
 
 
@@ -75,6 +82,10 @@ function main {
 		"all")
 			compile_modules
 	    	compile_test_benchs
+	    ;;
+
+		"vcd")
+	    	move_vcd
 	    ;;
 
 	  	*)
