@@ -31,24 +31,24 @@ function compile_modules {
 		echo "${red}$(cat error)${reset}"
 	else
 		echo "${green}@ MODULES: Correctly compiled${reset}"
+		rm a.out
 	fi
 
 	rm error
-	rm a.out
 }
 
 # compile all verilog test bench in 'tbs' folder
 function compile_test_benchs {
-	iverilog $(ls $f_tb/*.v) 2> error
+	iverilog $(ls $f_tb/*.v) $(ls $f_modules/*.v) 2> error
 
 	if [[ "$(wc -l error)" != "0 error" ]]; then
 		echo "${red}$(cat error)${reset}"
 	else
 		echo "${green}@ TEST-BENCHS: Correctly compiled${reset}"
+		rm a.out
 	fi
 
 	rm error
-	rm a.out
 }
 
 # compile all modules including test benchs

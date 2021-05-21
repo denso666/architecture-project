@@ -19,14 +19,14 @@ module control (
 				RegWrite = 1;
 			end
 			default: begin
-				RegDst = x;
-				Branch = x;
-				MemRead = x;
-				MemToReg = x;
-				ALUOp = 3'bx;
-				MemWrite = x;
-				ALUSrc = x;
-				RegWrite = x;
+				RegDst = 1'bx;
+				Branch = 1'bx;
+				MemRead = 1'bx;
+				MemToReg = 1'bx;
+				ALUOp = 3'b1x;
+				MemWrite = 1'bx;
+				ALUSrc = 1'bx;
+				RegWrite = 1'bx;
 			end
 
 		endcase
