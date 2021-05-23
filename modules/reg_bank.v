@@ -11,18 +11,21 @@ module reg_bank (
 	// load
 	initial $readmemh("mem/bank.mem", memory);
 
-	always @* begin
+	always @(*) begin
+		// only for testing
+		// if (AW == 5'd24)
+		// 	for (i=0; i<32;i=i+1)
+		// 		$display("mem[%d]: %d",i,memory[i]);
+
+
 		// write
-		if (REG_WRITE) memory[AW] = DIN;
+		if (REG_WRITE && AW != 5'bx) memory[AW] = DIN;
 
 		// read
 		DR1 <= memory[AR1];
 		DR2 <= memory[AR2];
 
-		// only for testing, final state of memory
-		if (AW == 5'd29)
-			for (i=0; i<32;i=i+1)
-				$display("mem[%d]: %b",i,memory[i]);
+		$display ("DR1[%d]: %d; DR2[%d]: %d; MEM[%d]: %d",AR1,DR1,AR2,DR2,AW,memory[AW]);
 
 	end
 

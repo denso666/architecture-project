@@ -4,6 +4,6 @@ module mux2_1_5b (
 	output reg [4:0] R
 );
 
-	always @* R <= (!SEL) ? A : B;
+	always @* R = (!SEL) ? A : B;
 
 endmodule

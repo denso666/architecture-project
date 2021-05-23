@@ -1,9 +1,8 @@
 module test_bench;
 
 	reg clk;
-
 	single_dp duv( clk );
-	
+
 	always #10 clk = ~clk;
 
 	initial begin
@@ -12,7 +11,7 @@ module test_bench;
 
       	clk <= 0;
 
-      	#160 $finish;
+      	#100 $finish;
 	end
 
 endmodule

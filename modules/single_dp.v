@@ -23,7 +23,6 @@ module single_dp (input clk);
     wire [31:0] mem_out, WriteData;
 
 
-    
     //------------- PHASE 0
     pc fetch_0 ( INS_ADDR, clk, INS_PC );
     adder fetch_1 ( INS_PC, 32'd4, out_adder1 );
@@ -70,7 +69,7 @@ module single_dp (input clk);
     mux2_1_32b post_adder (
         out_adder1,
         out_adder2,
-        (Branch && z_flag),
+        (Branch & z_flag),
         INS_ADDR
     );
 
