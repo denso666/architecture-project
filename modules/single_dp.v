@@ -14,7 +14,7 @@ module single_dp (input clk);
     //------------- PHASE 3
     wire [2:0] alu_c;
     wire [31:0] mux_alu, alu_out;
-    wire z_flag;
+    wire z_flag, out_and;
 
     //------------- PHASE 4
     wire [31:0] out_shift, out_adder2;
@@ -66,10 +66,11 @@ module single_dp (input clk);
     //------------- PHASE 4
     shift_l s_left ( ext, out_shift );
     adder post_shift ( out_adder1, out_shift, out_adder2 );
+    and1b and_branch ( Branch, z_flag, out_and );
     mux2_1_32b post_adder (
         out_adder1,
         out_adder2,
-        (Branch & z_flag),
+        out_and,
         INS_ADDR
     );
 
