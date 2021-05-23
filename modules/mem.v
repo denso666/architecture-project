@@ -10,11 +10,11 @@ module mem (
 
 	always @* begin
 	  if ( en_W ) begin
-	  	memory[ADDR] <= DIN;
-	  	R <= 32'bx;
+	  	memory[ADDR] = DIN;
+	  	R = 32'bx;
 	  end
 
-	  else R <= memory[ADDR];
+	  else R = memory[ADDR];
 	end
 
 endmodule

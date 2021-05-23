@@ -9,15 +9,15 @@ module alu_control (
 
 	always @* begin
 		case (control)
-			9'b010100000: OP<=3'b000;// add
-			9'b010100010: OP<=3'b001;// sub
-			9'b010100100: OP<=3'b010;// and
-			9'b010100101: OP<=3'b011;// or
-			9'b010101010: OP<=3'b100;// slt
-			9'b010011000: OP<=3'b101;// mul
-			9'b010011010: OP<=3'b110;// div
-			9'b010000000: OP<=3'b111;// nop
-			default: OP<=3'bx;
+			9'b010100000: OP=3'b000;// add
+			9'b010100010: OP=3'b001;// sub
+			9'b010100100: OP=3'b010;// and
+			9'b010100101: OP=3'b011;// or
+			9'b010101010: OP=3'b100;// slt
+			9'b010011000: OP=3'b101;// mul
+			9'b010011010: OP=3'b110;// div
+			9'b010000000: OP=3'b111;// nop
+			default: OP=3'bx;
 		endcase
 	end
 
