@@ -6,7 +6,8 @@ module pc (
     initial INS_OUT = 32'b0;
 
     always @ ( posedge clk ) begin
-        if ( INS ) INS_OUT = INS;
+        //$display("INS: %d; OUT: %d", INS, INS_OUT);
+        INS_OUT = INS;
     end
 
 endmodule // pc

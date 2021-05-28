@@ -12,8 +12,8 @@ module alu (
 		case (SEL)
 			3'd0: R = A + B;
 			3'd1: R = A - B;
-			3'd2: R = A && B;
-			3'd3: R = A || B;
+			3'd2: R = A & B;
+			3'd3: R = A | B;
 			3'd4: R = (A < B) ? 32'd1 : 32'd0;
 			3'd5: R = A * B;
 			3'd6: R = A / B;

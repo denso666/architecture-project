@@ -24,9 +24,9 @@ module single_dp (input clk);
 
 
     //------------- PHASE 0
-    pc fetch_0 ( INS_ADDR, clk, INS_PC );
-    adder fetch_1 ( INS_PC, 32'd4, out_adder1 );
-    ins_mem fetch_2 ( INS_PC, INS );
+    pc pcontrol ( INS_ADDR, clk, INS_PC );
+    adder adder_ins ( INS_PC, 32'd4, out_adder1 );
+    ins_mem instructions( INS_PC, INS );
 
 
     //------------- PHASE 1
@@ -77,7 +77,7 @@ module single_dp (input clk);
 
     //------------- PHASE 5
     mem memory ( alu_out, RD2, MemWrite, MemRead, mem_out );
-    mux2_1_32b post_memory ( mem_out, alu_out, MemToReg, WriteData );
+    mux2_1_32b post_memory ( alu_out, mem_out, MemToReg, WriteData );
 
 
 endmodule // single_dp

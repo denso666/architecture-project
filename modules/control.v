@@ -12,7 +12,7 @@ module control (
 				RegDst = 1;
 				Branch = 0;
 				MemRead = 0;
-				MemToReg = 1;
+				MemToReg = 0;
 				ALUOp = 3'b010;
 				MemWrite = 0;
 				ALUSrc = 0;

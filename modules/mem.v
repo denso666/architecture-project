@@ -9,12 +9,14 @@ module mem (
 	reg [31:0] memory [0:31];
 
 	always @* begin
+
 	  if ( en_W ) begin
 	  	memory[ADDR] = DIN;
 	  	R = 32'bx;
 	  end
 
 	  else R = memory[ADDR];
+
 	end
 
 endmodule

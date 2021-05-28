@@ -12,23 +12,24 @@ module reg_bank (
 	initial $readmemh("mem/bank.mem", memory);
 
 	always @(*) begin
+
 		// read
 		DR1 = memory[AR1];
 		DR2 = memory[AR2];
 
 		// write
-		if (REG_WRITE && AW) begin
-			memory[AW] = DIN;
-		end
+		if ( REG_WRITE )
+			memory[AW] <= DIN;
 
 
+
+		//if ( AW ) // validate 0 case and x or z condition
 		// only for testing
-
 		//$display ("DR1[%d]: %d; DR2[%d]: %d; MEM[%d]: %d; DIN: %d",AR1,DR1,AR2,DR2,AW,memory[AW], DIN);
 
-		// if (!AW)
-		// 	for (i=0; i<32;i=i+1)
-		// 		$display("mem[%d]: %d",i,memory[i]);
+		// if (AW == 0)
+		//  	 for (i=0; i<32;i=i+1)
+		//   	 	$display("mem[%d]: %d",i,memory[i]);
 	end
 
 endmodule

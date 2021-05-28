@@ -4,6 +4,6 @@ module mux2_1_32b (
 	output reg [31:0] R
 );
 
-	always @* R = (!SEL) ? A : B;
+	always @* R = (SEL) ? B : A;
 
 endmodule
