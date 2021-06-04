@@ -5,7 +5,7 @@ module buffer_m (
 );
 
     always @ (posedge clk) begin
-        out = in; 
+        out = in;
     end
 
 endmodule // buffer_m

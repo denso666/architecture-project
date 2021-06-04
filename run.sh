@@ -2,6 +2,7 @@
 
 # folders
 f_modules=modules
+f_modules_buffers=modules/buffers
 f_tb=tbs
 f_vcd=vcd
 
@@ -25,7 +26,7 @@ function help {
 
 # compile all verilog modules in 'modules' folder
 function compile_modules {
-	iverilog $(ls $f_modules/*.v) 2> error
+	iverilog $(ls $f_modules/*.v) $(ls $f_modules_buffers/*.v) 2> error
 
 	if [[ "$(wc -l error)" != "0 error" ]]; then
 		echo "${red}$(cat error)${reset}"
@@ -53,7 +54,7 @@ function compile_test_benchs {
 
 # compile all modules including test benchs
 function compile_all {
-	iverilog $(ls $f_tb/*.v) $(ls $f_modules/*.v) 2> error
+	iverilog $(ls $f_tb/*.v) $(ls $f_modules/*.v) $(ls $f_modules_buffers/*.v) 2> error
 
 	if [[ "$(wc -l error)" != "0 error" ]]; then
 		echo "${red}$(cat error)${reset}"

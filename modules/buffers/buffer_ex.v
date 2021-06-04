@@ -1,7 +1,7 @@
 module buffer_ex (
     input clk,
-    input [2:0] in,
-    output reg [2:0] out
+    input [4:0] in,
+    output reg [4:0] out
 );
 
     always @ (posedge clk) begin

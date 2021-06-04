@@ -4,7 +4,6 @@ module alu (
 	output reg [31:0] R,
 	output reg ZF
 );
-
 	always @* begin
 		// only for testing
 		//$display ("A:[%h], B:[%h]", A, B);
