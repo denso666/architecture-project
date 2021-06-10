@@ -7,7 +7,7 @@ module control (
 
 	always @* begin
 		case (OPCODE)
-
+		
 			6'b000000: begin// R
 				RegDst = 1;
 				Branch = 0;
@@ -47,6 +47,46 @@ module control (
 				MemWrite = 0;
 				ALUSrc = 0;
 				RegWrite = 0;
+			end
+			6'b001000: begin// addi
+				RegDst = 1;
+				Branch = 0;
+				MemRead = 0;
+				MemToReg = 0;
+				ALUOp = 3'b011;
+				MemWrite = 0;
+				ALUSrc = 1;
+				RegWrite = 1;
+			end
+			6'b001100: begin// andi
+				RegDst = 1;
+				Branch = 0;
+				MemRead = 0;
+				MemToReg = 0;
+				ALUOp = 3'b111;
+				MemWrite = 0;
+				ALUSrc = 1;
+				RegWrite = 1;
+			end
+			6'b001101: begin// ori
+				RegDst = 1;
+				Branch = 0;
+				MemRead = 0;
+				MemToReg = 0;
+				ALUOp = 3'b101;
+				MemWrite = 0;
+				ALUSrc = 1;
+				RegWrite = 1;
+			end
+			6'b001010: begin// slti
+				RegDst = 1;
+				Branch = 0;
+				MemRead = 0;
+				MemToReg = 0;
+				ALUOp = 3'b001;
+				MemWrite = 0;
+				ALUSrc = 1;
+				RegWrite = 1;
 			end
 			default: begin
 				RegDst = 1'bx;

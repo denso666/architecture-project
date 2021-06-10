@@ -5,6 +5,9 @@ module pc (
 );
     initial INS_OUT = 32'b0;
 
-    always @ ( posedge clk ) INS_OUT = INS;
+    always @ ( posedge clk ) begin
+        if ( INS ) INS_OUT = INS;
+        else INS_OUT = 32'b0;
+    end
 
 endmodule // pc

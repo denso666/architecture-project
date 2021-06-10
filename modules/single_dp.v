@@ -2,7 +2,7 @@ module single_dp (input clk);
 
 
     //------------- PHASE 0
-    wire [31:0] inMuxA, inMuxB, outMux0, outPC, InsMuxOut, outInsMem;
+    wire [31:0] inMuxA, inMuxB, outMux0, outPC, outInsMem;
     wire PCSrc;
      //------------- BUFFER 0
     wire [31:0] A0, B0;
@@ -19,6 +19,7 @@ module single_dp (input clk);
     wire [2:0] outB_M0;
     wire [4:0] outB_EX0;
 
+
     //------------- PHASE 2
     wire [2:0] alu_c;
     wire [31:0] mux_alu, alu_out, out_shift, out_adder2;
@@ -31,6 +32,7 @@ module single_dp (input clk);
     wire [1:0] outB_WB1;
     wire [2:0] outB_M1;
 
+
     //------------- PHASE 3
     wire [31:0] mem_out;
     //------------- BUFFER 3
@@ -39,9 +41,8 @@ module single_dp (input clk);
     wire [1:0] outB_WB2;
 
 
-
     //------------- PHASE 0
-    mux2_1_32b mux0( inMuxA, inMuxB, PCSrc, InsMuxOut );
+    mux2_1_32b mux0( inMuxA, inMuxB, PCSrc, outMux0 );
     pc pcontrol ( clk, outMux0, outPC );
     adder adder_ins ( outPC, 32'd4, inMuxA );
     ins_mem instructions( outPC, outInsMem );
@@ -118,7 +119,6 @@ module single_dp (input clk);
 
     //------------- PHASE 5
     mux2_1_32b post_memory ( B3, A3, outB_WB2[0], final_WriteData );
-
 
 
 endmodule // single_dp

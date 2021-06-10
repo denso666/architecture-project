@@ -9,11 +9,9 @@ module test_bench;
 		$dumpfile("phase1.vcd");
       	$dumpvars(0, test_bench);
 
-		#10
-
       	clk <= 0;
 
-      	#110 $finish;
+      	#500 $finish;
 	end
 
 endmodule

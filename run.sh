@@ -21,7 +21,8 @@ function help {
 	echo "-> 'all'     to compile modules and test benchs"
 	echo "-> 'modules' to compile only modules located in /modules folder"
 	echo "-> 'tbs'     to compile only test benchs located in /tbs folder"
-	echo "-> 'vcd'     to create wave from an a.out file${reset}"
+	echo "-> 'vcd'     to create wave from an a.out file"
+	echo "-> 'wave'    to open created wave file${reset}"
 }
 
 # compile all verilog modules in 'modules' folder
@@ -40,7 +41,7 @@ function compile_modules {
 
 # compile all verilog test bench in 'tbs' folder
 function compile_test_benchs {
-	iverilog $(ls $f_tb/*.v) $(ls $f_modules/*.v) 2> error
+	iverilog $(ls $f_tb/*.v) $(ls $f_modules/*.v) $(ls $f_modules_buffers/*.v) 2> error
 
 	if [[ "$(wc -l error)" != "0 error" ]]; then
 		echo "${red}$(cat error)${reset}"
@@ -91,6 +92,11 @@ function move_vcd {
 	rm temp
 }
 
+# open with gtkwave the wave file created
+function open_wave {
+	gtkwave $f_vcd/*.vcd
+}
+
 function main {
 
 	case ${args[0]} in
@@ -113,6 +119,10 @@ function main {
 
 		"vcd")
 	    	create_wave
+	    ;;
+
+		"wave")
+	    	open_wave
 	    ;;
 
 	  	*)

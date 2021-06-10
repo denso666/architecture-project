@@ -19,8 +19,7 @@ module reg_bank (
 
 		// write
 		if ( REG_WRITE )
-			memory[AW] <= DIN;
-
+			memory[AW] = DIN;
 
 
 		//if ( AW ) // validate 0 case and x or z condition
@@ -28,8 +27,8 @@ module reg_bank (
 		//$display ("DR1[%d]: %d; DR2[%d]: %d; MEM[%d]: %d; DIN: %d",AR1,DR1,AR2,DR2,AW,memory[AW], DIN);
 
 		// if (AW == 0)
-		//  	 for (i=0; i<32;i=i+1)
-		//   	 	$display("mem[%d]: %d",i,memory[i]);
+		 	//  for (i=0; i<32;i=i+1)
+		  	//  	$display("mem[%d]: %d",i,memory[i]);
 	end
 
 endmodule

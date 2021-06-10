@@ -15,7 +15,9 @@ module mem (
 	  	R = 32'bx;
 	  end
 
-	  else R = memory[ADDR];
+	  if ( en_R ) begin
+		R = memory[ADDR];
+	  end
 
 	end
 

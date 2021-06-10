@@ -3,6 +3,6 @@ module sign_extensor (
     output [31:0] OUT
 );
 
-    assign OUT = {{16{IN[15]}}, IN};
+    assign OUT = { { 16 { IN[15] } }, IN };
 
 endmodule // sign_extensor
