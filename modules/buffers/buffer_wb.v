@@ -4,8 +4,6 @@ module buffer_wb (
     output reg [1:0] out
 );
 
-    always @ (posedge clk) begin
-        out = in;
-    end
+    always @ (negedge clk) out = in;
 
 endmodule // buffer_wb

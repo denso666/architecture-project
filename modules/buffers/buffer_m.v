@@ -4,8 +4,6 @@ module buffer_m (
     output reg [2:0] out
 );
 
-    always @ (posedge clk) begin
-        out = in;
-    end
+    always @ (negedge clk) out = in;
 
 endmodule // buffer_m

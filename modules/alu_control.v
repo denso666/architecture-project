@@ -4,7 +4,7 @@ module alu_control (
 	output reg [2:0] OP
 );
 
-	always @* begin
+	always @(*) begin
 		case ( ALUOP )
 			3'b010: begin // R type
 				case ( FUNCTION )
@@ -20,14 +20,12 @@ module alu_control (
 				endcase
 			end
 			3'b011: OP=3'b000; // addi
+			3'b100: OP=3'b001; // sub
 			3'b111: OP=3'b010; // andi
 			3'b101: OP=3'b011; // ori
 			3'b001: OP=3'b100; // slti
-			default: ;
+			default:OP=3'bx;
 		endcase
-
-
-
 	end
 
 endmodule

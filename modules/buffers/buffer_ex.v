@@ -4,8 +4,6 @@ module buffer_ex (
     output reg [4:0] out
 );
 
-    always @ (posedge clk) begin
-        out = in;
-    end
+    always @ (negedge clk) out = in;
 
 endmodule // buffer_ex

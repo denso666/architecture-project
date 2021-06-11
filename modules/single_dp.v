@@ -1,10 +1,9 @@
 module single_dp (input clk);
 
-
     //------------- PHASE 0
     wire [31:0] inMuxA, inMuxB, outMux0, outPC, outInsMem;
     wire PCSrc;
-     //------------- BUFFER 0
+    //------------- BUFFER 0
     wire [31:0] A0, B0;
 
 
@@ -26,7 +25,7 @@ module single_dp (input clk);
     wire [4:0] out_mux_wb;
     wire z_flag;
     //------------- BUFFER 2
-    wire [31:0] A2, C2, D2;
+    wire [31:0] C2, D2;
     wire B2;
     wire [4:0] E2;
     wire [1:0] outB_WB1;

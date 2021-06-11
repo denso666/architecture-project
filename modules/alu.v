@@ -4,9 +4,7 @@ module alu (
 	output reg [31:0] R,
 	output reg ZF
 );
-	always @* begin
-		// only for testing
-		//$display ("A:[%h], B:[%h]", A, B);
+	always @(*) begin
 
 		case (SEL)
 			3'd0: R = A + B;
@@ -21,6 +19,8 @@ module alu (
 		endcase
 
 		ZF <= (R) ? 0 : 1;
+		// only for testing
+		// $display ("A:[%d], B:[%d], R:[%d]", A, B, R);
 	end
 
 endmodule

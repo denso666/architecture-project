@@ -5,9 +5,8 @@ module control (
 	output reg MemWrite, ALUSrc, RegWrite
 );
 
-	always @* begin
+	always @(*) begin
 		case (OPCODE)
-		
 			6'b000000: begin// R
 				RegDst = 1;
 				Branch = 0;
@@ -23,7 +22,7 @@ module control (
 				Branch = 0;
 				MemRead = 1;
 				MemToReg = 1;
-				ALUOp = 3'b010;
+				ALUOp = 3'b011;
 				MemWrite = 0;
 				ALUSrc = 1;
 				RegWrite = 1;
@@ -33,7 +32,7 @@ module control (
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 1'bx;
-				ALUOp = 3'b010;
+				ALUOp = 3'b011;
 				MemWrite = 1;
 				ALUSrc = 1;
 				RegWrite = 0;
@@ -43,7 +42,7 @@ module control (
 				Branch = 1;
 				MemRead = 0;
 				MemToReg = 1'bx;
-				ALUOp = 3'b010;
+				ALUOp = 3'b100;
 				MemWrite = 0;
 				ALUSrc = 0;
 				RegWrite = 0;
@@ -98,7 +97,6 @@ module control (
 				ALUSrc = 1'bx;
 				RegWrite = 1'bx;
 			end
-
 		endcase
 	end
 

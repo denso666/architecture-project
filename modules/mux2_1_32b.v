@@ -4,7 +4,9 @@ module mux2_1_32b (
 	output reg [31:0] R
 );
 
-	always @* begin
+	always @(*) begin
+		if ( SEL ) R = B;
+		else R = A;
 		case ( SEL )
 			0: R = A;
 			1: R = B;

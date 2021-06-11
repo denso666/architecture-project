@@ -1,9 +1,9 @@
 module buffer_a (
-        input clk,
-        input [31:0] inAdd, inInsMem,
-        output reg [31:0] outAdd, outInsMem
+    input clk,
+    input [31:0] inAdd, inInsMem,
+    output reg [31:0] outAdd, outInsMem
 );
-    always @ (posedge clk) begin
+    always @ (negedge clk) begin
         outAdd = inAdd;
         outInsMem = inInsMem;
     end

@@ -6,7 +6,7 @@ module buffer_b (
     output reg [4:0] outInsA, outInsB
 );
 
-    always @ (posedge clk) begin
+    always @ (negedge clk) begin
         outAdder = inAdder;
         outRD1 = inRD1;
         outRD2 = inRD2;

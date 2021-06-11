@@ -6,7 +6,7 @@ module buffer_d (
     output reg [4:0] outMux5b
 );
 
-    always @ (posedge clk) begin
+    always @ (negedge clk) begin
         outReadData = inReadData;
         outOutAlu = inOutAlu;
         outMux5b = inMux5b;

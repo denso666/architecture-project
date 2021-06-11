@@ -11,7 +11,7 @@ module buffer_c (
 
 );
 
-    always @ (posedge clk) begin
+    always @ (negedge clk) begin
         outAdder = inAdder;
         outZf = inZf;
         outOutAlu = inOutAlu;

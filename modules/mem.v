@@ -8,16 +8,14 @@ module mem (
 
 	reg [31:0] memory [0:31];
 
-	always @* begin
+	always @(*) begin
 
 	  if ( en_W ) begin
 	  	memory[ADDR] = DIN;
 	  	R = 32'bx;
 	  end
 
-	  if ( en_R ) begin
-		R = memory[ADDR];
-	  end
+	  if ( en_R ) R = memory[ADDR];
 
 	end
 

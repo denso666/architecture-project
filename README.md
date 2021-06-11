@@ -12,6 +12,8 @@ chmod +x run.sh
 .
 ├── mem
 |   └── Memory files
+├── mips
+|   └── Assembler files
 ├── modules
 |   └── Modules files
 ├── ss

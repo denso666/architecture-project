@@ -4,7 +4,7 @@ module mux2_1_5b (
 	output reg [4:0] R
 );
 
-	always @* begin
+	always @(*) begin
 		case ( SEL )
 			0: R = A;
 			1: R = B;
