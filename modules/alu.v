@@ -15,12 +15,11 @@ module alu (
 			3'd5: R = A * B;
 			3'd6: R = A / B;
 			3'd7: R = B << 0;
-			default: R = 32'bx;
 		endcase
 
 		ZF <= (R) ? 0 : 1;
 		// only for testing
-		// $display ("A:[%d], B:[%d], R:[%d]", A, B, R);
+		$display ("A:[%d], B:[%d], S[%b], R:[%d]", A, B, SEL, R);
 	end
 
 endmodule

@@ -4,7 +4,7 @@ module ins_mem (
 );
     reg [7:0] mem [0:399];
 
-    initial $readmemb ("mem/instructions.mem", mem);
+    initial $readmemb ("mem/instructions2.mem", mem);
 
     assign INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
 

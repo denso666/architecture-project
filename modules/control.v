@@ -48,7 +48,7 @@ module control (
 				RegWrite = 0;
 			end
 			6'b001000: begin// addi
-				RegDst = 1;
+				RegDst = 0;
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 0;
@@ -58,7 +58,7 @@ module control (
 				RegWrite = 1;
 			end
 			6'b001100: begin// andi
-				RegDst = 1;
+				RegDst = 0;
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 0;
@@ -68,7 +68,7 @@ module control (
 				RegWrite = 1;
 			end
 			6'b001101: begin// ori
-				RegDst = 1;
+				RegDst = 0;
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 0;
@@ -78,7 +78,7 @@ module control (
 				RegWrite = 1;
 			end
 			6'b001010: begin// slti
-				RegDst = 1;
+				RegDst = 0;
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 0;
@@ -86,16 +86,6 @@ module control (
 				MemWrite = 0;
 				ALUSrc = 1;
 				RegWrite = 1;
-			end
-			default: begin
-				RegDst = 1'bx;
-				Branch = 1'bx;
-				MemRead = 1'bx;
-				MemToReg = 1'bx;
-				ALUOp = 3'b1x;
-				MemWrite = 1'bx;
-				ALUSrc = 1'bx;
-				RegWrite = 1'bx;
 			end
 		endcase
 	end
