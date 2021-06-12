@@ -23,7 +23,8 @@ module reg_bank (
 		// only for testing
 		// $display ("DR1[%d]: %d; DR2[%d]: %d; MEM[%d]: %d; DIN: %d",AR1,DR1,AR2,DR2,AW,memory[AW], DIN);
 
-		// for (i=0; i<32; i=i+1) $display("mem[%d]: %d",i,memory[i]);
+		$display("		Bank");
+		for (i=0; i<32; i=i+1) $display("mem[%d]: %d",i,memory[i]);
 
 	end
 

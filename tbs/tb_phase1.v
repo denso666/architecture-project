@@ -9,7 +9,7 @@ module test_bench;
 		$dumpfile("phase1.vcd");
       	$dumpvars(0, test_bench);
 
-      	#8000 $finish;
+      	#20000 $finish;
 	end
 
 endmodule
