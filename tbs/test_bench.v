@@ -6,10 +6,10 @@ module test_bench;
 	always #100 clk = ~clk;
 
 	initial begin
-		$dumpfile("phase1.vcd");
+		$dumpfile("wave.vcd");
       	$dumpvars(0, test_bench);
 
-      	#20000 $finish;
+      	#6000 $finish;
 	end
 
 endmodule
