@@ -11,15 +11,17 @@ module mem (
 
 	always @(*) begin
 
+		// enable write
 	  	if ( en_W ) begin
 	  		memory[ADDR] = DIN;
 	  		R = 32'bx;
 	  	end
 
+		// enable read
 	  	if ( en_R ) R = memory[ADDR];
 
-		$display("		Memorie");
-		for (i=0; i<32; i=i+1) $display("mem[%d]: %d",i,memory[i]);
+		// $display("		Memorie");
+		// for (i=0; i<32; i=i+1) $display("mem[%d]: %d",i,memory[i]);
 
 	end
 
