@@ -88,6 +88,8 @@ module control (
 				RegWrite = 1;
 			end
 		endcase
+
+		// $display("OPCODE = [%b]", OPCODE);
 	end
 
 endmodule

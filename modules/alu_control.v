@@ -18,11 +18,11 @@ module alu_control (
 				6'b000000: OP=3'b111;// nop
 			endcase
 			end
-			3'b011: OP=3'b000; // addi
+			3'b011: OP=3'b000; // add
 			3'b100: OP=3'b001; // sub
-			3'b111: OP=3'b010; // andi
-			3'b101: OP=3'b011; // ori
-			3'b001: OP=3'b100; // slti
+			3'b111: OP=3'b010; // and
+			3'b101: OP=3'b011; // or
+			3'b001: OP=3'b100; // slt
 		endcase
 	end
 
