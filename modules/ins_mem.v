@@ -4,13 +4,13 @@ module ins_mem (
 );
     reg [7:0] mem [0:399];
 
-    initial $readmemb ("mem/instructions2.mem", mem);
+    initial $readmemb ("mem/instructions3.mem", mem);
 
-    // always @(*) begin
-    //     INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
-    //     $display("ADDR[%d], INS => %b", ADDR, INS);
-    // end
+    always @(*) begin
+        INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
+        $display("ADDR[%d], INS => %b", ADDR, INS);
+    end
 
-    assign INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
+    // assign INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
 
 endmodule

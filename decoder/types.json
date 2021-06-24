@@ -1,0 +1,5 @@
+{
+    "R": [ "add", "sub", "sub", "mul", "div", "nop", "slt", "and", "or" ],
+    "I": [ "addi", "andi", "ori", "slti", "lw", "sw", "beq"],
+    "J": [ "j" ]
+}

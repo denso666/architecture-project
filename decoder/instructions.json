@@ -1,0 +1,90 @@
+{
+	"add" : {
+		"name": "add",
+		"code": "000000",
+		"rcode": "100000",
+		"sections": [5,5,5]
+	},
+	"sub": {
+		"name": "sub",
+		"code": "000000",
+		"rcode": "100010",
+		"sections": [5,5,5]
+	},
+	"and": {
+		"name": "and",
+		"code": "000000",
+		"rcode": "100100",
+		"sections": [5,5,5]
+	},
+	"or": {
+		"name": "or",
+		"code": "000000",
+		"rcode": "100101",
+		"sections": [5,5,5]
+	},
+	"slt": {
+		"name": "slt",
+		"code": "000000",
+		"rcode": "101010",
+		"sections": [5,5,5]
+	},
+	"mul": {
+		"name": "mul",
+		"code": "000000",
+		"rcode": "011000",
+		"sections": [5,5,5]
+	},
+	"div": {
+		"name": "div",
+		"code": "000000",
+		"rcode": "011010",
+		"sections": [5,5,5]
+	},
+	"nop": {
+		"name": "nop",
+		"code": "000000",
+		"rcode": "000000",
+		"sections": [5,5,5]
+	},
+	"lw": {
+		"name": "lw",
+		"code": "100011",
+		"sections": [5,5,16]
+	},
+	"sw": {
+		"name": "sw",
+		"code": "101011",
+		"sections": [5,5,16]
+	},
+	"beq": {
+		"name": "beq",
+		"code": "000100",
+		"sections": [5,5,16]
+	},
+	"j": {
+		"name": "j",
+		"code": "000010",
+		"sections": [26]
+	},
+	"addi": {
+		"name": "addi",
+		"code": "001000",
+		"sections": [5,5,16]
+	},
+	"andi": {
+		"name": "andi",
+		"code": "001100",
+		"sections": [5,5,16]
+	},
+	"ori": {
+		"name": "ori",
+		"code": "001101",
+		"sections": [5,5,16]
+	},
+	"slti": {
+		"name": "slti",
+		"code": "001010",
+		"sections": [5,5,16]
+	}
+}

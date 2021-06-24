@@ -1,21 +1,22 @@
 module single_dp (input clk);
 
     //------------- PHASE 0
-    wire [31:0] inMuxA, inMuxB, outMux0, outPC, outInsMem;
+    wire [31:0] inMuxA, inMuxB, outMux0, outMuxJump, outPC, outInsMem;
     wire PCSrc;
+    wire [27:0] out_shift_jump;
     //------------- BUFFER 0
     wire [31:0] A0, B0;
 
 
     //------------- PHASE 1
-    wire RegDst, Branch, MemRead, MemToReg, MemWrite, ALUSrc, RegWrite;
+    wire RegDst, Branch, MemRead, MemToReg, MemWrite, ALUSrc, RegWrite, Jump;
     wire [2:0] ALUOp;
     wire [31:0] RD1, RD2, ext, final_WriteData;
     //------------- BUFFER 1
     wire [31:0] A1, B1, C1, D1;
     wire [4:0] E1, F1;
     wire [1:0] outB_WB1;
-    wire [2:0] outB_M1;
+    wire [3:0] outB_M1;
     wire [4:0] outB_EX1;
 
 
@@ -29,7 +30,7 @@ module single_dp (input clk);
     wire B2;
     wire [4:0] E2;
     wire [1:0] outB_WB2;
-    wire [2:0] outB_M2;
+    wire [3:0] outB_M2;
 
 
     //------------- PHASE 3
@@ -42,9 +43,12 @@ module single_dp (input clk);
 
     //------------- PHASE 0
     mux2_1_32b mux0( inMuxA, inMuxB, PCSrc, outMux0 );
-    pc pcontrol ( clk, outMux0, outPC );
+    pc pcontrol ( clk, outMuxJump, outPC );
     adder adder_ins ( outPC, 32'd4, inMuxA );
-    ins_mem instructions( outPC, outInsMem );
+    ins_mem instructions ( outPC, outInsMem );
+
+    shift_l_2628 slJump ( outInsMem[25:0], out_shift_jump );
+    mux2_1_32b muxJump ( outMux0, {out_shift_jump, inMuxA[3:0]}, outB_M2[3], outMuxJump );
 
     //------------- BUFFER 0
     buffer_a b0 (
@@ -63,7 +67,8 @@ module single_dp (input clk);
         ALUOp,
         MemWrite,
         ALUSrc,
-        RegWrite
+        RegWrite,
+        Jump
     );
     reg_bank bank (
         B0[25:21],
@@ -78,7 +83,7 @@ module single_dp (input clk);
 
     //------------- BUFFER 1
     buffer_wb  b_wb1 ( clk, {RegWrite,MemToReg},       outB_WB1 );
-    buffer_m   b_m1  ( clk, {Branch,MemRead,MemWrite}, outB_M1 );
+    buffer_m   b_m1  ( clk, {Jump,Branch,MemRead,MemWrite}, outB_M1 );
     buffer_ex  b_ex1 ( clk, {RegDst,ALUOp,ALUSrc},     outB_EX1 );
     buffer_b   b1    (
         clk,
