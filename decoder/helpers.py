@@ -28,11 +28,11 @@ def loadInsFile( file_name ):
 		file = open( file_name )
 		data = file.read()
 		file.close()
-		return data.strip().split("\n")
+		return data.strip().split( "\n" )
 		
 	except Exception as e:
 		print( e )
 		return 0
 
 def intToBinary( number, quantity ):
-	return bin( int( number ) )[2:].zfill(quantity)
+	return bin( int( number ) )[2:].zfill( quantity )

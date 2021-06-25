@@ -1,12 +1,21 @@
+`timescale 1ns/1ns
 module buffer_b (
     input clk,
-    input [31:0] inAdder, inRD1, inRD2, inSignExt,
-    input [4:0] inInsA, inInsB,
-    output reg [31:0] outAdder, outRD1, outRD2, outSignExt,
-    output reg [4:0] outInsA, outInsB
+    input [31:0] inAdder,
+    input [31:0] inRD1,
+    input [31:0] inRD2,
+    input [31:0] inSignExt,
+    input [4:0] inInsA,
+    input [4:0] inInsB,
+    output reg [31:0] outAdder,
+    output reg [31:0] outRD1,
+    output reg [31:0] outRD2,
+    output reg [31:0] outSignExt,
+    output reg [4:0] outInsA,
+    output reg [4:0] outInsB
 );
 
-    always @ (negedge clk) begin
+    always @ (posedge clk) begin
         outAdder = inAdder;
         outRD1 = inRD1;
         outRD2 = inRD2;

@@ -4,7 +4,7 @@ module pc (
     output reg [31:0] INS_OUT
 );
 
-    always @ (negedge clk) begin
+    always @ (posedge clk) begin
         if ( INS ) INS_OUT = INS;
         else INS_OUT = 32'd0;
     end

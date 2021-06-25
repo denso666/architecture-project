@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module single_dp (input clk);
 
     //------------- PHASE 0

@@ -35,12 +35,10 @@ def toMachineCode( ins, format ):
 	return binaryIns
 
 
-
 def decodeMIPS():
 	data = loadInsFile("../mips/algorithm.mips")
 
-
-	# remove spaces, comas and dollars characters
+	# remove spaces, comas and dollar characters
 	preMachineIns = []
 	for i in data:
 		i = i.strip().replace(',', '')
@@ -53,8 +51,6 @@ def decodeMIPS():
 		machineIns.append( toMachineCode( i, INS_FORMAT[ i[0] ] ) )
 
 	print( *machineIns, sep="\n" )
-
-
 
 
 decodeMIPS()
