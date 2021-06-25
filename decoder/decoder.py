@@ -1,4 +1,4 @@
-from helpers import intToBinary, loadInsDict, loadInsFile, loadInsTypes
+from helpers import intToBinary, loadInsDict, loadInsFile, loadInsTypes, saveFile
 
 INS_FORMAT = loadInsDict()
 INS_TYPES = loadInsTypes()
@@ -34,23 +34,36 @@ def toMachineCode( ins, format ):
 
 	return binaryIns
 
-
 def decodeMIPS():
-	data = loadInsFile("../mips/algorithm.mips")
+	try:
+		data = loadInsFile("../mips/algorithm.mips")
 
-	# remove spaces, comas and dollar characters
-	preMachineIns = []
-	for i in data:
-		i = i.strip().replace(',', '')
-		i = i.strip().replace('$', '')
-		preMachineIns.append( i.strip().split(' ') )
+		# remove spaces, comas and dollar characters
+		assemblerIns = []
+		for i in data:
+			i = i.strip().replace(',', '')
+			i = i.strip().replace('$', '')
+			assemblerIns.append( i.strip().split(' ') )
 
-	# convert assembler to binary
-	machineIns = []
-	for i in preMachineIns:
-		machineIns.append( toMachineCode( i, INS_FORMAT[ i[0] ] ) )
+		# convert assembler to binary
+		preMachineIns = []
+		for i in assemblerIns:
+			preMachineIns.append( toMachineCode( i, INS_FORMAT[ i[0] ] ) )
 
-	print( *machineIns, sep="\n" )
 
+		# final format in 8bits words
+		machineIns = []
+		for i in preMachineIns:
+			machineIns.append( i[0:8] )
+			machineIns.append( i[8:16] )
+			machineIns.append( i[16:24] )
+			machineIns.append( i[24:] )
+
+		saveFile( "../mem/ins_c.mips", machineIns )
+
+	except Exception as e:
+		print( e )
+
+	# print( *machineIns, sep="\n" )
 
 decodeMIPS()
