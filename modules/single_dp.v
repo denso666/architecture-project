@@ -49,7 +49,7 @@ module single_dp (input clk);
     ins_mem instructions ( outPC, outInsMem );
 
     shift_l_2628 slJump ( outInsMem[25:0], out_shift_jump );
-    mux2_1_32b muxJump ( outMux0, {out_shift_jump, inMuxA[3:0]}, outB_M2[3], outMuxJump );
+    mux2_1_32b muxJump ( outMux0, {inMuxA[31:28], out_shift_jump}, outB_M2[3], outMuxJump );
 
     //------------- BUFFER 0
     buffer_a b0 (

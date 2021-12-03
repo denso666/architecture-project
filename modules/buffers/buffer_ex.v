@@ -5,6 +5,6 @@ module buffer_ex (
     output reg [4:0] out
 );
 
-    always @ (posedge clk) out = in;
+    always @ (posedge clk) out <= in;
 
 endmodule // buffer_ex

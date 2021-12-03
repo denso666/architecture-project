@@ -13,13 +13,14 @@ module buffer_c (
     output reg [4:0] outMux5b
 
 );
+    initial $printtimescale(buffer_c);
 
     always @ (posedge clk) begin
-        outAdder = inAdder;
-        outZf = inZf;
-        outOutAlu = inOutAlu;
-        outRD2 = inRD2;
-        outMux5b = inMux5b;
+        outAdder <= inAdder;
+        outZf <= inZf;
+        outOutAlu <= inOutAlu;
+        outRD2 <= inRD2;
+        outMux5b <= inMux5b;
     end
 
 endmodule // buffer_c

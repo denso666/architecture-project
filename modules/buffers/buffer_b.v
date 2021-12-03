@@ -15,13 +15,15 @@ module buffer_b (
     output reg [4:0] outInsB
 );
 
+    initial $printtimescale(buffer_b);
+
     always @ (posedge clk) begin
-        outAdder = inAdder;
-        outRD1 = inRD1;
-        outRD2 = inRD2;
-        outSignExt = inSignExt;
-        outInsA = inInsA;
-        outInsB = inInsB;
+        outAdder <= inAdder;
+        outRD1 <= inRD1;
+        outRD2 <= inRD2;
+        outSignExt <= inSignExt;
+        outInsA <= inInsA;
+        outInsB <= inInsB;
     end
 
 endmodule // buffer_b

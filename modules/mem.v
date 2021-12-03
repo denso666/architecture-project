@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module mem (
 	input [31:0] ADDR,
 	input [31:0] DIN,
@@ -7,21 +8,18 @@ module mem (
 );
 
 	reg [31:0] memory [0:31];
-	integer i;
 
 	always @(*) begin
 
 		// enable write
 	  	if ( en_W ) begin
-	  		memory[ADDR] = DIN;
-	  		R = 32'bx;
+	  		memory[ADDR] <= DIN;
+	  		R <= 32'bx;
 	  	end
 
 		// enable read
-	  	if ( en_R ) R = memory[ADDR];
+	  	if ( en_R ) R <= memory[ADDR];
 
-		// $display("		Memorie");
-		// for (i=0; i<32; i=i+1) $display("mem[%d]: %d",i,memory[i]);
 
 	end
 

@@ -9,10 +9,12 @@ module buffer_d (
     output reg [4:0] outMux5b
 );
 
+    initial $printtimescale(buffer_d);
+
     always @ (posedge clk) begin
-        outReadData = inReadData;
-        outOutAlu = inOutAlu;
-        outMux5b = inMux5b;
+        outReadData <= inReadData;
+        outOutAlu <= inOutAlu;
+        outMux5b <= inMux5b;
     end
 
 endmodule // buffer_d

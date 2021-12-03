@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module sign_extensor (
     input [15:0] IN,
     output [31:0] OUT

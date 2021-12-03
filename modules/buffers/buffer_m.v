@@ -5,6 +5,6 @@ module buffer_m (
     output reg [3:0] out
 );
 
-    always @ (posedge clk) out = in;
+    always @ (posedge clk) out <= in;
 
 endmodule // buffer_m

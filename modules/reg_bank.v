@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module reg_bank (
 	input [4:0] AR1, AR2, AW,
 	input REG_WRITE,
@@ -14,11 +15,11 @@ module reg_bank (
 	always @(*) begin
 
 		// read
-		DR1 = memory[AR1];
-		DR2 = memory[AR2];
+		DR1 <= memory[AR1];
+		DR2 <= memory[AR2];
 
 		// write
-		if ( REG_WRITE ) memory[AW] = DIN;
+		if ( REG_WRITE ) memory[AW] <= DIN;
 
 		// only for testing
 		// $display ("DR1[%d]: %d; DR2[%d]: %d; MEM[%d]: %d; DIN: %d",AR1,DR1,AR2,DR2,AW,memory[AW], DIN);

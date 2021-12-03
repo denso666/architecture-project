@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module control (
 	input [5:0] OPCODE,
 	output reg RegDst, Branch, MemRead, MemToReg,
@@ -107,8 +108,6 @@ module control (
 				Jump = 0;
 			end
 		endcase
-
-		// $display("OPCODE = [%b]", OPCODE);
 	end
 
 endmodule
