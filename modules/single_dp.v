@@ -6,7 +6,7 @@ module single_dp (input clk);
     wire PCSrc;
     wire [27:0] out_shift_jump;
     //------------- BUFFER 0
-    wire [31:0] A0, B0;
+    wire [31:0] A0, B0, J0;
 
 
     //------------- PHASE 1
@@ -14,7 +14,7 @@ module single_dp (input clk);
     wire [2:0] ALUOp;
     wire [31:0] RD1, RD2, ext, final_WriteData;
     //------------- BUFFER 1
-    wire [31:0] A1, B1, C1, D1;
+    wire [31:0] A1, B1, C1, D1, J1;
     wire [4:0] E1, F1;
     wire [1:0] outB_WB1;
     wire [3:0] outB_M1;
@@ -27,7 +27,7 @@ module single_dp (input clk);
     wire [4:0] out_mux_wb;
     wire z_flag;
     //------------- BUFFER 2
-    wire [31:0] C2, D2;
+    wire [31:0] C2, D2, J2;
     wire B2;
     wire [4:0] E2;
     wire [1:0] outB_WB2;
@@ -49,13 +49,13 @@ module single_dp (input clk);
     ins_mem instructions ( outPC, outInsMem );
 
     shift_l_2628 slJump ( outInsMem[25:0], out_shift_jump );
-    mux2_1_32b muxJump ( outMux0, {inMuxA[31:28], out_shift_jump}, outB_M2[3], outMuxJump );
+    mux2_1_32b muxJump ( outMux0, J2, outB_M2[3], outMuxJump );
 
     //------------- BUFFER 0
     buffer_a b0 (
         clk,
-        inMuxA, outInsMem,
-        A0, B0
+        inMuxA, outInsMem, {inMuxA[31:28], out_shift_jump},
+        A0, B0, J0
     );
 
     //------------- PHASE 1
@@ -88,8 +88,8 @@ module single_dp (input clk);
     buffer_ex  b_ex1 ( clk, {RegDst,ALUOp,ALUSrc},     outB_EX1 );
     buffer_b   b1    (
         clk,
-        A0, RD1, RD2, ext, B0[20:16],B0[15:11],
-        A1, B1, C1, D1, E1, F1
+        A0, RD1, RD2, ext, B0[20:16],B0[15:11], J0,
+        A1, B1, C1, D1, E1, F1, J1
     );
 
     //------------- PHASE 2
@@ -105,8 +105,8 @@ module single_dp (input clk);
     buffer_m   b_m2  ( clk, outB_M1, outB_M2 );
     buffer_c   b2 (
         clk,
-        out_adder2, z_flag, alu_out, C1, out_mux_wb,
-        inMuxB, B2, C2, D2, E2
+        out_adder2, z_flag, alu_out, C1, out_mux_wb, J1,
+        inMuxB, B2, C2, D2, E2, J2
     );
 
 

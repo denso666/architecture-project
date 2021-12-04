@@ -12,4 +12,4 @@ module mux2_1_32b (
 		endcase
 	end
 
-endmodule
+endmodule // mux2_1_32b

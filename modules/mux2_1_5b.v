@@ -12,4 +12,4 @@ module mux2_1_5b (
 		endcase
 	end
 
-endmodule
+endmodule // mux2_1_5b

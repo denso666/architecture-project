@@ -9,4 +9,4 @@ module ins_mem (
 
     assign INS = { mem[ADDR], mem[ADDR+1], mem[ADDR+2], mem[ADDR+3] };
 
-endmodule
+endmodule // ins_mem

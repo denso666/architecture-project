@@ -20,7 +20,6 @@ module mem (
 		// enable read
 	  	if ( en_R ) R <= memory[ADDR];
 
-
 	end
 
-endmodule
+endmodule // mem

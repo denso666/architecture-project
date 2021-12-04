@@ -107,7 +107,18 @@ module control (
 				RegWrite = 1;
 				Jump = 0;
 			end
+			default: begin
+				RegDst = 1'bx;
+				Branch = 1'bx;
+				MemRead = 1'bx;
+				MemToReg = 1'bx;
+				ALUOp = 3'bx;
+				MemWrite = 1'bx;
+				ALUSrc = 1'bx;
+				RegWrite = 1'bx;
+				Jump = 0;
+			end
 		endcase
 	end
 
-endmodule
+endmodule // control

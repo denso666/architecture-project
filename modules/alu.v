@@ -19,8 +19,6 @@ module alu (
 		endcase
 
 		ZF <= (R) ? 0 : 1;
-		// only for testing
-		// $display ("A:[%d], B:[%d], S[%b], R:[%d]", A, B, SEL, R);
 	end
 
-endmodule
+endmodule // alu
