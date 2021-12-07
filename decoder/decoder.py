@@ -4,7 +4,7 @@ INS_FORMAT = loadInsDict()
 INS_TYPES = loadInsTypes()
 
 def toMachineCode( ins, format ):
-	
+
 	binaryIns = ""
 
 	# R type
@@ -15,9 +15,9 @@ def toMachineCode( ins, format ):
 		for n in format["sections"]:
 			binaryIns += intToBinary( ins[index], n )
 			index += 1
-		
+
 		binaryIns += "00000"+format['rcode']
-	
+
 	# I type
 	elif ins[0] in INS_TYPES['I']:
 		binaryIns += format["code"]
@@ -59,7 +59,7 @@ def decodeMIPS():
 			machineIns.append( i[16:24] )
 			machineIns.append( i[24:] )
 
-		saveFile( "../mem/ins_c.mips", machineIns )
+		saveFile( "../mem/ins_c.mem", machineIns )
 
 	except Exception as e:
 		print( e )

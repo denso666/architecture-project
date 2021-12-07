@@ -5,6 +5,7 @@ f_modules=modules
 f_modules_buffers=modules/buffers
 f_tb=tbs
 f_vcd=vcd
+f_python=decoder
 
 # script arguments
 args=$@
@@ -22,7 +23,8 @@ function help {
 	echo "-> 'modules' to compile only modules located in /modules folder"
 	echo "-> 'tbs'     to compile only test benchs located in /tbs folder"
 	echo "-> 'vcd'     to create wave from an a.out file"
-	echo "-> 'wave'    to open created wave file${reset}"
+	echo "-> 'wave'    to open created wave file"
+	echo "-> 'decode'  to execute python decoder${reset}"
 }
 
 # compile all verilog modules in 'modules' folder
@@ -97,6 +99,11 @@ function open_wave {
 	gtkwave $f_vcd/*.vcd
 }
 
+# execute python decoder
+function decode {
+	python3 $f_python/decoder.py
+}
+
 function main {
 
 	case ${args[0]} in
@@ -123,6 +130,10 @@ function main {
 
 		"wave")
 	    	open_wave
+	    ;;
+
+		"decode")
+	    	decode
 	    ;;
 
 	  	*)

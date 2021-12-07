@@ -31,7 +31,7 @@ module control (
 				Jump = 0;
 			end
 			6'b101011: begin// sw
-				RegDst = 1'bx;
+				RegDst = 0;
 				Branch = 0;
 				MemRead = 0;
 				MemToReg = 1'bx;

@@ -7,9 +7,7 @@ module reg_bank (
 );
 
 	reg [31:0] memory [0:31];
-	integer i;
 
-	// load memory
 	initial $readmemh("mem/bank.mem", memory);
 
 	always @(*) begin

@@ -9,6 +9,8 @@ module mem (
 
 	reg [31:0] memory [0:31];
 
+	initial $readmemb("mem/data.mem", memory);
+
 	always @(*) begin
 
 		// enable write
@@ -18,8 +20,10 @@ module mem (
 	  	end
 
 		// enable read
-	  	if ( en_R ) R <= memory[ADDR];
+	  	else if ( en_R ) R <= memory[ADDR];
 
+		// any option
+		else R <= 32'bx;
 	end
 
 endmodule // mem

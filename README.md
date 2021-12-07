@@ -3,8 +3,8 @@
 ### Compile
 
 ```bash
-chmod +x run.sh
-./run.sh // view compile options
+$ chmod +x run.sh
+$ ./run.sh # view script options
 ```
 
 ### Temporal structure
@@ -20,6 +20,8 @@ chmod +x run.sh
 |   └── Screenshoots
 ├── tbs
 |   └── Test bench modules
-└── vcd
-    └── Wave files
+├── vcd
+|   └── Wave files
+└── decoder
+    └── Assmebler decoder
 ```
